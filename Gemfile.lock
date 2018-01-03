@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: f2db689ba567d1a018f4dacb1ccf909adc93e887
+  specs:
+    bcrypt (3.1.11)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,7 +47,6 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
-    bcrypt-ruby (3.0.1)
     binding_of_caller (0.7.3)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
@@ -305,7 +310,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby (~> 3.0.0)
+  bcrypt!
   codecov
   coffee-rails (~> 4.1.0)
   database_cleaner
