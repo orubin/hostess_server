@@ -1,0 +1,8 @@
+development: &defaults
+  adapter: postgresql
+  encoding: unicode
+  database: hostess_server
+
+test:
+  <<: *defaults
+  database: hostess_server_test
