@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
       resources :restaurants do
         collection do
-          post 'special_requests' => :special_requests
+          get 'special_requests' => :special_requests
         end
       end
     end
