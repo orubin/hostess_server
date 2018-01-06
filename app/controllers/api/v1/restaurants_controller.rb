@@ -1,4 +1,4 @@
-class Api::V1::RestaurantssController < Api::V1::ApplicationController
+class Api::V1::RestaurantsController < Api::V1::ApplicationController
 
   def index
 
@@ -17,6 +17,10 @@ class Api::V1::RestaurantssController < Api::V1::ApplicationController
     end
 
     render json: result
+  end
+
+  def special_requests
+    render json: { code: 200, error: nil }
   end
 
   def get
