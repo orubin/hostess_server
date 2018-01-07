@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :orders do
         collection do
-          post 'create_order' => :create_order
-          post 'create_order_waiting' => :create_order_waiting
+          post 'create' => :create
+          post 'create_waiting' => :create_waiting
         end
       end
 
