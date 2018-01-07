@@ -1,36 +1,28 @@
 class Api::V1::RestaurantsController < Api::V1::ApplicationController
 
+  before_filter :set_restaurant, only: [:special_requests, :restaurant_details]
+
   def index
 
   end
 
   def create
-    if params[:consumer] == AvailableConsumers::APPBOY
-      authenticate_user! # adds this one to GT in version 7.7
-      with_consumer(AppboyCouponCreator)
-    elsif params[:consumer] == AvailableConsumers::CPS
-      with_consumer(CouponCreator)
-    elsif params[:consumer] == AvailableConsumers::GT
-      with_consumer(CodeCouponCreator)
-    else
-      handle_error(Api::V1::Errors::NoConsumerProvided.new('must provide a valid consumer'))
-    end
 
     render json: result
   end
 
   def special_requests
-    restaurant = Restaurant.find(params[:restaurant_id])
-    render json: { code: 404, error: 'Not found' } unless restaurant and return
+    render json: { code: 404, error: 'Not found' } unless @restaurant and return
+
+    result = @restaurant.get_special_requests
 
     render json: { code: 200, error: nil, body: result }
   end
 
   def restaurant_details
-    restaurant = Restaurant.find(params[:restaurant_id])
-    render json: { code: 404, error: 'Not found' } unless restaurant and return
+    render json: { code: 404, error: 'Not found' } unless @restaurant and return
 
-    result = restaurant.as_json
+    result = @restaurant.as_json
 
     render json: { code: 200, error: nil, data: result }
   end
@@ -40,7 +32,8 @@ class Api::V1::RestaurantsController < Api::V1::ApplicationController
   end
 
   def set_restaurant
-
+    return unless params[:restaurant_id]
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
 end
