@@ -20,9 +20,9 @@ class Api::V1::RestaurantsController < Api::V1::ApplicationController
   end
 
   def restaurant_details
-    render json: { code: 404, error: 'Not found' } unless @restaurant and return
+    #render json: { code: 404, error: 'Not found' } unless @restaurant and return
 
-    result = @restaurant.as_json
+    result = Restaurant.find(params[:restaurant_id]).as_json
 
     render json: { code: 200, error: nil, data: result } and return
   end
