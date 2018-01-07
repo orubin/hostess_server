@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :restaurants do
         collection do
           get 'special_requests' => :special_requests
+          post 'create' => :create
           get 'restaurant_details' => :restaurant_details
         end
       end
