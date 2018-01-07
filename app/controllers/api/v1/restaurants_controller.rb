@@ -16,7 +16,7 @@ class Api::V1::RestaurantsController < Api::V1::ApplicationController
 
     result = @restaurant.get_special_requests
 
-    render json: { code: 200, error: nil, body: result }
+    render json: { code: 200, error: nil, body: result } and return
   end
 
   def restaurant_details
@@ -24,7 +24,7 @@ class Api::V1::RestaurantsController < Api::V1::ApplicationController
 
     result = @restaurant.as_json
 
-    render json: { code: 200, error: nil, data: result }
+    render json: { code: 200, error: nil, data: result } and return
   end
 
   def get
