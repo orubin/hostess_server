@@ -13,7 +13,7 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
   def create
     render json: { code: 500, error: 'Params missing' } unless validate_params and return
 
-    Order.find_or_initialize(params[:id], params[:id])
+    Order.find_or_initialize_by(id: params[:id])
 
     render json: { code: 200, error: nil }
   end
@@ -21,7 +21,7 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
   def create_waiting
     render json: { code: 500, error: 'Params missing' } unless validate_params and return
 
-    Order.find_or_initialize(params[:id], params[:id])
+    Order.find_or_initialize_by(id: params[:id], params[:id])
 
     render json: { code: 200, error: nil }
   end
