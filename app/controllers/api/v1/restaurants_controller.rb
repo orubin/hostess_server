@@ -7,7 +7,7 @@ class Api::V1::RestaurantsController < Api::V1::ApplicationController
   end
 
   def create
-    Restaurant.find_or_initialize_by(id: params[:restaurant_id])
+    Restaurant.find_or_initialize_by(id: params[:restaurant_id]).save!
     render json: { code: 200, error: nil }
   end
 
