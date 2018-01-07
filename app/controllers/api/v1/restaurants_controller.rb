@@ -20,10 +20,26 @@ class Api::V1::RestaurantsController < Api::V1::ApplicationController
   end
 
   def special_requests
-    render json: { code: 200, error: nil }
+    restaurant = Restaurant.find(params[:restaurant_id])
+    render json: { code: 404, error: 'Not found' } unless restaurant and return
+
+    render json: { code: 200, error: nil, body: result }
+  end
+
+  def restaurant_details
+    restaurant = Restaurant.find(params[:restaurant_id])
+    render json: { code: 404, error: 'Not found' } unless restaurant and return
+
+    result = restaurant.as_json
+
+    render json: { code: 200, error: nil, data: result }
   end
 
   def get
+
+  end
+
+  def set_restaurant
 
   end
 
