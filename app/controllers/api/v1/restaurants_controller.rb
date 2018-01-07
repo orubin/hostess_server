@@ -7,8 +7,8 @@ class Api::V1::RestaurantsController < Api::V1::ApplicationController
   end
 
   def create
-
-    render json: result
+    Restaurant.find_or_initialize(params[:restaurant_id])
+    render json: { code: 200, error: nil }
   end
 
   def special_requests
