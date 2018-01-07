@@ -4,7 +4,9 @@ class CreateTables < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.references :restaurant, index: true, foreign_key: true
-
+      t.location_lng :integer
+      t.location_lat :integer
+      t.size :integer
       t.timestamps null: false
     end
   end
